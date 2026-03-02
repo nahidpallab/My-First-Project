@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Image Jigsaw Puzzle</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <h1>Image Jigsaw Puzzle</h1>
+    <p>Upload any image, choose a difficulty, then solve the shuffled puzzle.</p>
+
+    <section class="controls">
+      <label class="file-picker">
+        <span>Choose Image</span>
+        <input id="imageInput" type="file" accept="image/*" />
+      </label>
+
+      <label>
+        Difficulty
+        <select id="gridSize">
+          <option value="3">Easy (3 × 3)</option>
+          <option value="4" selected>Medium (4 × 4)</option>
+          <option value="5">Hard (5 × 5)</option>
+        </select>
+      </label>
+
+      <button id="startButton" type="button">Start Puzzle</button>
+      <button id="resetButton" type="button">Reset</button>
+    </section>
+
+    <section class="status">
+      <p id="statusText">Upload an image to begin.</p>
+      <p>Moves: <strong id="moveCounter">0</strong></p>
+      <p>Time: <strong id="timeCounter">00:00</strong></p>
+    </section>
+
+    <section class="board-wrap">
+      <div id="puzzleBoard" class="board" aria-label="Jigsaw puzzle board"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
