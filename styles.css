@@ -1,0 +1,147 @@
+:root {
+  color-scheme: dark;
+  --bg: #111827;
+  --panel: #1f2937;
+  --tile-gap: 4px;
+  --tile-size: 90px;
+  --text: #f9fafb;
+  --muted: #cbd5e1;
+  --accent: #38bdf8;
+  --accent-2: #818cf8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: radial-gradient(circle at top, #1e293b, var(--bg) 55%);
+  color: var(--text);
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+}
+
+.app {
+  width: min(980px, 100%);
+  background: color-mix(in oklab, var(--panel), black 12%);
+  border: 1px solid #334155;
+  border-radius: 20px;
+  padding: 1.25rem;
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.35);
+}
+
+h1 {
+  margin-top: 0;
+}
+
+p {
+  color: var(--muted);
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.file-picker {
+  position: relative;
+  overflow: hidden;
+  border-radius: 999px;
+  background: linear-gradient(130deg, var(--accent), var(--accent-2));
+  color: #0f172a;
+  font-weight: 700;
+  padding: 0.55rem 1rem;
+  cursor: pointer;
+}
+
+.file-picker input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+select,
+button {
+  padding: 0.55rem 0.85rem;
+  border-radius: 10px;
+  border: 1px solid #475569;
+  background: #0f172a;
+  color: var(--text);
+}
+
+button {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+button:hover {
+  border-color: var(--accent);
+}
+
+.status {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+
+.status p {
+  margin: 0;
+}
+
+.board-wrap {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+}
+
+.board {
+  display: grid;
+  gap: var(--tile-gap);
+  touch-action: none;
+  user-select: none;
+  background: #0b1220;
+  border: 2px solid #334155;
+  border-radius: 12px;
+  padding: var(--tile-gap);
+}
+
+.tile {
+  width: var(--tile-size);
+  height: var(--tile-size);
+  background-repeat: no-repeat;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  cursor: grab;
+  transition: transform 120ms ease;
+}
+
+.tile.dragging {
+  opacity: 0.75;
+  cursor: grabbing;
+  transform: scale(0.97);
+}
+
+.tile.correct {
+  outline: 2px solid rgba(56, 189, 248, 0.8);
+}
+
+@media (max-width: 700px) {
+  :root {
+    --tile-size: 68px;
+  }
+
+  .status {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+}
